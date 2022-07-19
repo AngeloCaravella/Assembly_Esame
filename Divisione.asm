@@ -2,7 +2,7 @@
 
 dividendo: .asciz "Inserisci il dividendo:\n"
 divisore: .asciz "Inserisci il divisore:\n"
-risultato: .asciz "Il risultato è:\n"
+risultato: .asciz "Il risultato Ã¨:\n"
 resto: .asciz "\nCon resto:\n"
 .text 
 
