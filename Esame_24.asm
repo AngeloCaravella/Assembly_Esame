@@ -1,7 +1,7 @@
 .data
 
 str: .asciz "Inserisci una stringa: \n"
-lun: .asciz "\nLa lunghezza è:\n"
+lun: .asciz "\nLa lunghezza Ã¨:\n"
 slash: .asciz "\n"
 vocali: .asciz "aeiou"
 
