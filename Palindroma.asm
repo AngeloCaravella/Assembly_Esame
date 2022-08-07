@@ -48,6 +48,10 @@ lbu t5,(t3)
 
 lbu t6,(t4)
 
+beq t5,t6,s
+addi t6,t6,-32
+s:
+
 addi t3,t3,1
 addi t4,t4,-1
 addi t0,t0, -1
