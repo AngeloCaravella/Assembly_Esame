@@ -1,54 +1,54 @@
-.data 
+.data
 
-
-num: .asciz "Dammi un numero (<11 cifre):"
-
-str: .space 11
-
-.text 
-
+stringa: .asciz "Dammi un numero (<11 cifre) :"
+somma: .asciz "La somma è"
+spazio: .asciz "\n"
+.text
 
 .globl main
 
+main:
 
-main: 
-
-
-la a0, num
-li a7, 4
+la a0, stringa
+li a7,4
 ecall
 
-
-la a0, str
-li a1,11
 li a7,8
+li a1,11
 ecall
 
-la a0,str
-jal compute_sum
+jal compute.sum
 
-li a7,10
+la a0,somma
+li a7,4
 ecall
 
-compute_sum: #048d è lo 0
-mv t0,a0 
-li t2,48
-lenght: 
-lbu a0,(t0) 
-
-sub t3,t3,t2
 mv a0,t3
 li a7,1
 ecall
 
+
+li a7,10
+ecall 
+
+compute.sum:
+mv t0,a0
+li t3,0
+li t5,48
+li t6,57
+sum:
+lbu a0,(t0) 
+blt a0,t5, skip# se è minore di 48 significa che sono caratteri prima dello zero, non mi servono
+
+bgt a0,t6,skip# se è maggiore di 57 significa che somo caratteri dopo il 9, non mi servono
+
+sub t4,a0,t5
+beqz t4,skip
+add t3,t3,t4
+
+skip:
 addi t0,t0,1
 
-addi t1,t1,1
-bnez a0, lenght
-
-#mv a0, t1
-#li a7,1
-#ecall
-
-
+bnez a0,sum
+mv a0,t3
 jr ra
