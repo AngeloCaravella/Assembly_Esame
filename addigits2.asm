@@ -1,8 +1,7 @@
 .data
 
-stringa: .asciz "Dammi un numero (-2ˆ31<= x <2ˆ31):"
-somma: .asciz "La somma è"
-spazio: .asciz "\n"
+stringa: .asciz "Dammi un numero (-2Âˆ31<= x <2Âˆ31):\n"
+somma: .asciz "\nLa somma Ã¨:\n"
 
 .text
 
@@ -16,13 +15,11 @@ ecall
 li a7,5
 ecall
 
-bgt a0,zero, go
-
+bgtz a0, go
 li t1,-1
-
 mul a0,a0,t1
 go:
-jal compute.sum
+jal compute_sum
 
 la a0,somma
 li a7,4
@@ -36,17 +33,15 @@ li a7,10
 ecall 
 
 
-compute.sum:
+compute_sum:
 li t2,10
 mv t1,a0
 
 goo:
+rem t6,t1,t2 #divido per 10 e mi prendo il resto 
+add t3,t3,t6 #metto la somma dentro
 
-rem a1, t1,t2
-add t3,t3,a1
-
-div t1,t1,t2
-
+div t1,t1,t2 #sovrascrivo al numero la divisione appena fatta
 bnez t1, goo
 jr ra
 
