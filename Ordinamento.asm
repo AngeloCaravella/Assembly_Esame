@@ -116,7 +116,7 @@ next:
 lw a0,(t0)
 addi t0,t0,4
 lw a1,(t0) 
-beqz a1, fin1
+beqz a1, fin1# permette di non sforare con i confronti
 addi t5,t5,-1
 bgt a1,a0, next
 addi t0,t0,-4
